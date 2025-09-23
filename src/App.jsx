@@ -1,14 +1,44 @@
 import './App.css';
 
+function FormTitle({ children }) {
+  return (
+    <h2>{children}</h2>
+  );
+}
+
+function FormField({ children }) {
+  return (
+    <fieldset>{children}</fieldset>
+  );
+}
+
+function Label({ children, htmlFor }) {
+  return (
+    <label htmlFor={htmlFor}>{children}</label>
+  );
+}
+
+function Input(props) {
+  return (
+    <input {...props} />
+  );
+}
+
 function EventForm() {
   return (
     <form className="event-form">
-      <h2>Preencha para criar um evento:</h2>
+      <FormTitle>Preencha para criar um evento</FormTitle>
 
-      <fieldset>
-        <label htmlFor="">Qual o nome do evento?</label>
-        <input type="text" id="name" />
-      </fieldset>
+      <FormField>
+        <Label htmlFor="name">Qual o nome do evento?</Label>
+
+        <Input
+          type="text"
+          id="name"
+          placeholder="Summer dev hits"
+          name="eventName"
+        />
+      </FormField>
     </form>
   );
 }
