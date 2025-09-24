@@ -7,12 +7,3 @@ header {
   padding: 32px;
   text-align: center;
 }
-
-section {
-  background: linear-gradient(180deg, #17E4B9 0%, #091D24 100%);
-  text-align: center;
-}
-
-section img {
-  max-width: 90%;
-}
