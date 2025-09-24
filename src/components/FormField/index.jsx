@@ -1,6 +1,8 @@
+import "./formField.css";
+
 function FormField({ children }) {
   return (
-    <fieldset>{children}</fieldset>
+    <fieldset className="form-field">{children}</fieldset>
   );
 }
 

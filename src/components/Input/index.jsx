@@ -1,6 +1,8 @@
+import "./input.css"
+
 function Input(props) {
   return (
-    <input {...props} />
+    <input {...props} className="input" />
   );
 }
 
