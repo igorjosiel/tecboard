@@ -4,7 +4,7 @@ import Theme from "./components/Theme";
 import Banner from "./components/Banner";
 
 function App() {
-  const theme = [
+  const themes = [
     {
       id: 1,
       name: "front-end",
@@ -31,6 +31,15 @@ function App() {
     },
   ];
 
+  const events = [
+    {
+      cover: "https://raw.githubusercontent.com/viniciusneves/tecboard-assets/refs/heads/main/imagem_1.png",
+      theme: themes[0],
+      date: new Date(),
+      title: "Mulheres no Front",
+    }
+  ];
+
   return (
     <main>
       <header>
@@ -40,24 +49,14 @@ function App() {
       <Banner />
       <EventForm />
 
-      <section>
-        <Theme theme={theme[0]} />
-      </section>
-      <section>
-        <Theme theme={theme[1]} />
-      </section>
-      <section>
-        <Theme theme={theme[2]} />
-      </section>
-      <section>
-        <Theme theme={theme[3]} />
-      </section>
-      <section>
-        <Theme theme={theme[4]} />
-      </section>
-      <section>
-        <Theme theme={theme[5]} />
-      </section>
+      {themes.map(function (item) {
+        return (
+          <section key={item.id}>
+            <Theme theme={item} />
+            <EventCard event={events[o]} />
+          </section>
+        );
+      })}
     </main>
   );
 }
