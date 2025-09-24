@@ -4,6 +4,7 @@ import Label from "../Label";
 import Input from "../Input";
 import "./eventForm.css";
 import Botao from "../Botao";
+import SelectInput from "../SelectInput";
 
 function EventForm() {
   return (
@@ -29,6 +30,11 @@ function EventForm() {
             id="eventDate"
             name="eventDate"
           />
+        </FormField>
+        <FormField>
+          <Label htmlFor="eventDate">Data do evento?</Label>
+
+          <SelectInput />
         </FormField>
       </div>
 
