@@ -2,9 +2,9 @@ import FormTitle from "../FormTitle";
 import FormField from "../FormField";
 import Label from "../Label";
 import Input from "../Input";
-import "./eventForm.css";
 import Botao from "../Botao";
 import SelectInput from "../SelectInput";
+import "./eventForm.css";
 
 function EventForm() {
   return (

@@ -1,4 +1,4 @@
-import "./EventCard.css";
+import "./eventCard.css";
 
 function EventCard({ event }) {
     return (
@@ -7,7 +7,7 @@ function EventCard({ event }) {
 
             <div className="body">
                 <p className="tag">{event.theme.name}</p>
-                <p>{event.date.toLocaleDateString("pt-BR")}</p>
+                <p className="date">{event.date.toLocaleDateString("pt-BR")}</p>
 
                 <h4 className="title">{event.title}</h4>
             </div>

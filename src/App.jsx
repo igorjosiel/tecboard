@@ -2,6 +2,7 @@ import EventForm from "./components/EventForm";
 import './App.css';
 import Theme from "./components/Theme";
 import Banner from "./components/Banner";
+import EventCard from "./components/EventCard";
 
 function App() {
   const themes = [
@@ -53,7 +54,7 @@ function App() {
         return (
           <section key={item.id}>
             <Theme theme={item} />
-            <EventCard event={events[o]} />
+            <EventCard event={events[0]} />
           </section>
         );
       })}
