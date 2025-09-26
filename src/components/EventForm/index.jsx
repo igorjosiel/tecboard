@@ -6,35 +6,58 @@ import Botao from "../Botao";
 import SelectInput from "../SelectInput";
 import "./eventForm.css";
 
-function EventForm() {
+function EventForm({ themes, onSubmit }) {
+  function handleForm(formData) {
+    const event = {
+      cover: formData.get("cover"),
+      theme: themes.find(function (item) {
+        return item.id == formData.get("theme");
+      }),
+      date: new Date(formData.get("date")),
+      title: formData.get("name"),
+    }
+
+    onSubmit(event);
+  }
+
   return (
-    <form className="event-form">
+    <form className="event-form" action={handleForm}>
       <FormTitle>Preencha para criar um evento</FormTitle>
 
       <div className="fields">
         <FormField>
-          <Label htmlFor="eventName">Qual o nome do evento?</Label>
+          <Label htmlFor="name">Qual o nome do evento?</Label>
 
           <Input
             type="text"
-            id="eventName"
+            id="name"
             placeholder="Summer dev hits"
-            name="eventName"
+            name="name"
           />
         </FormField>
         <FormField>
-          <Label htmlFor="eventDate">Data do evento?</Label>
+          <Label htmlFor="cover">Qual o endereço da imagem de capa?</Label>
+
+          <Input
+            type="text"
+            id="cover"
+            placeholder="http://..."
+            name="cover"
+          />
+        </FormField>
+        <FormField>
+          <Label htmlFor="date">Data do evento?</Label>
 
           <Input
             type="date"
-            id="eventDate"
-            name="eventDate"
+            id="date"
+            name="date"
           />
         </FormField>
         <FormField>
-          <Label htmlFor="eventDate">Data do evento?</Label>
+          <Label htmlFor="theme">Tema do evento?</Label>
 
-          <SelectInput />
+          <SelectInput id="theme" name="theme" themes={themes} />
         </FormField>
       </div>
 

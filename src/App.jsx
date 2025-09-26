@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import EventForm from "./components/EventForm";
 import './App.css';
 import Theme from "./components/Theme";
@@ -32,14 +34,18 @@ function App() {
     },
   ];
 
-  const events = [
+  const [events, setEvents] = useState([
     {
       cover: "https://raw.githubusercontent.com/viniciusneves/tecboard-assets/refs/heads/main/imagem_1.png",
       theme: themes[0],
       date: new Date(),
       title: "Mulheres no Front",
     }
-  ];
+  ]);
+
+  function addEvent(event) {
+    setEvents([...events, event]);
+  }
 
   return (
     <main>
@@ -48,13 +54,17 @@ function App() {
       </header>
 
       <Banner />
-      <EventForm />
+      <EventForm themes={themes} onSubmit={addEvent} />
 
       {themes.map(function (item) {
         return (
           <section key={item.id}>
             <Theme theme={item} />
-            <EventCard event={events[0]} />
+            {events.map((event, index) => {
+              return (
+                <EventCard event={event} key={index} />
+              );
+            })}
           </section>
         );
       })}

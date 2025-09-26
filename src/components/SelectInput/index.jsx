@@ -1,9 +1,17 @@
 import "./selectInput.css";
 
-function SelectInput() {
+function SelectInput({ themes, ...rest }) {
     return (
-        <select className="select-input">
-            <option value=""></option>
+        <select {...rest} className="select-input" defaultValue="">
+            <option value="" disabled>Selecione uma opção</option>
+
+            {themes.map(theme => {
+                return (
+                    <option key={theme.id} value={theme.id}>
+                        {theme.name}
+                    </option>
+                );
+            })}
         </select>
     );
 }
