@@ -56,18 +56,34 @@ function App() {
       <Banner />
       <EventForm themes={themes} onSubmit={addEvent} />
 
-      {themes.map(function (item) {
-        return (
-          <section key={item.id}>
-            <Theme theme={item} />
-            {events.map((event, index) => {
-              return (
-                <EventCard event={event} key={index} />
-              );
-            })}
-          </section>
-        );
-      })}
+      <section className="container">
+        {themes.map(function (theme) {
+          if (!events.some(event => {
+            return event.theme.id == theme.id;
+          })) {
+            return null;
+          };
+
+          return (
+            <section key={theme.id}>
+              <Theme theme={theme} />
+
+              <div className="events">
+                {events
+                  .filter(event => {
+                    return event.theme.id == theme.id;
+                  })
+                  .map((event, index) => {
+                    return (
+                      <EventCard event={event} key={index} />
+                    )}
+                  )
+                }
+              </div>
+            </section>
+          );
+        })}
+      </section>
     </main>
   );
 }
